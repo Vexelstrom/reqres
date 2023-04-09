@@ -11,6 +11,7 @@ class Test:
     def test_step1_web(self):
         self.driver.get(url)
         self.driver.find_element("xpath", "//*[@id='console']/div[1]/ul/li[1]").click()
+        self.driver.find_element("xpath", "//*[@id='console']/div[2]/div[2]/p/strong/span[contains(text(), '200')]")
         self.driver.find_element("xpath", "/html/body/div[2]/div/div/section[1]/div[2]/div[2]/pre[contains(text(), 'michael.lawson@reqres.in')]")
         time.sleep(5)
 
@@ -20,3 +21,4 @@ class Test:
         search_cortege = 0
         assert response_body["data"][search_cortege]["first_name"] == "Michael"
         assert response_body["data"][search_cortege]["email"] == "michael.lawson@reqres.in"
+        assert response.status_code == 200
